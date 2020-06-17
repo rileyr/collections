@@ -1,0 +1,12 @@
+package collections
+
+// Any invokes the given function for each element in the collection.
+// The first time the function returns true, iteration is halted and true is returned. false is returned if no elements result in true.
+func Any(type T)(c Collection(T), fn func(T) bool) (result bool) {
+  EachWhile(c, func(e T) bool {
+    result = fn(e)
+    return !result
+  })
+
+  return result
+}

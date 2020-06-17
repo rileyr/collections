@@ -1,0 +1,12 @@
+package collections
+
+// Inject invokes the the provided function for each element in the collection.
+// On the first call, the memo value is the initial memo. The memo is reassigned to
+// the result of each call therafter, and the final value returned.
+func Inject(type T, M)(c Collection(T), memo M, fn func(M, T) M) M {
+  Each(c, func(e T) {
+    memo = fn(memo, e)
+  })
+
+  return memo
+}

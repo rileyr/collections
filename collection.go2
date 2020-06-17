@@ -1,0 +1,9 @@
+package collections
+
+type Collection(type T) struct {
+	Elems []T
+}
+
+func New(type T)(e []T) Collection(T) {
+	return Collection(T){e}
+}

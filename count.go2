@@ -1,0 +1,10 @@
+package collections
+
+// Count returns the number of elements for which the given function returns true.
+func Count(type T)(c Collection(T), fn func(T) bool) int {
+  result :=0
+  Each(c, func(e T) {
+    if fn(e) { result++ }
+  })
+  return result
+}

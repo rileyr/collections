@@ -1,0 +1,18 @@
+package collections
+
+// Each invokes the given function for each element in the collection.
+func Each(type T)(c Collection(T), fn func(T)) {
+  for _, e := range c.Elems {
+    fn(e)
+  }
+}
+
+// EachWhile invokes the given function once for each elemement in the collection.
+// If the function returns false, iteration is halted.
+func EachWhile(type T)(c Collection(T), fn func(T) bool) {
+  for _, e := range c.Elems {
+    if ok := fn(e); !ok {
+      return
+    }
+  }
+}

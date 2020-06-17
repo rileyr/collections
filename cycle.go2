@@ -1,0 +1,31 @@
+package collections
+
+// Cycle will call the given function N times. If N is greater
+// than the number of elements in the collection, iteration will
+// loop back to the first element when the last element is reached.
+// If N <= 0, Cycle will run forever.
+func Cycle(type T)(c Collection(T), n int, fn func(T)) {
+  if n <= 0 {
+    for { Each(c, fn) }
+    return
+  }
+
+  l := len(c.Elems)
+  if l == 0 { return }
+  ct := 0
+
+  for {
+    idx := 0
+
+    EachWhile(c, func(e T) bool {
+      fn(e)
+      ct++
+      idx++
+      return ct < n && idx < l
+    })
+
+    if ct >= n {
+      break
+    }
+  }
+}

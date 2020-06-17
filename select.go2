@@ -1,0 +1,14 @@
+package collections
+
+// Select returns the set of elements for which the given function returns true.
+func Select(type T)(c Collection(T), fn func(T) bool) Collection(T) {
+  out := []T{}
+
+  Each(c, func(e T) {
+    if fn(e) {
+      out = append(out, e)
+    }
+  })
+
+  return New(out)
+}

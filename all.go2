@@ -1,0 +1,14 @@
+package collections
+
+// All invokes the given function for each element, and returns true if all calls return true.
+// If any call returns false, iteration is halted and false is returned.
+func All(type T)(c Collection(T), fn func(T) bool) (result bool) {
+  result = true
+
+  EachWhile(c, func(e T) bool {
+    result = fn(e)
+    return result
+  })
+
+  return result
+}

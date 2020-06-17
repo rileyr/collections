@@ -1,0 +1,21 @@
+package main
+
+import (
+	"fmt"
+
+	"github.com/rileyr/collections"
+)
+
+func main() {
+	c := collections.New([]int{1,2,3})
+  label("collection", c)
+
+  collections.Cycle(c, 5, func(i int) { fmt.Printf("%d\n", i) })
+  fmt.Printf("odd count: %d\n", collections.Count(c, func(i int) bool {
+    return i%2!=0
+  }))
+}
+
+func label(type T)(n string, v T) {
+  fmt.Printf("%s: %#v\n", n, v)
+}
